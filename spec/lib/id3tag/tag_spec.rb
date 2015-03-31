@@ -213,10 +213,10 @@ describe ID3Tag::Tag do
       end
       context "Reading only v1" do
         subject { described_class.new(nil, :v1) }
-        its(:artist) { should eq("") }
+        its(:artist) { should be_nil }
         its(:title) { should eq("pov_20131018-2100a.mp3") }
-        its(:album) { should eq("") }
-        its(:year) { should eq("") }
+        its(:album) { should be_nil }
+        its(:year) { should be_nil }
         its(:track_nr) { should be_nil }
         its(:genre) { should eq("Blues") }
         its(:comments) { should be_nil }
@@ -230,7 +230,7 @@ describe ID3Tag::Tag do
         its(:year) { should eq("2013") }
         its(:track_nr) { should be_nil }
         it "should return nil for genre as this tag have incorect genre frame" do
-          subject.genre.should eq("")
+          subject.genre.should be_nil
         end
         its(:comments) { should eq("Lisa Jardine compares the contributions of Ada Lovelace and Alan Turing a century later to computer science and contrasts their views on the potential of and limits to machine intelligence. \r\nProducer: Sheila Cook") }
         it "should return eng comment" do

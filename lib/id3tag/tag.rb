@@ -22,8 +22,9 @@ module ID3Tag
 
     def content_of_first_frame(name)
       possible_frame_ids_by_name(name).each do |frame_id|
-        first_frame_by_id(frame_id).try do |frame|
-          return frame.content unless frame.content.strip.empty?
+        frame = first_frame_by_id(frame_id)
+        unless frame.nil?
+          return frame.content unless frame.content.nil? or frame.content.strip.empty?
         end
       end
       nil
